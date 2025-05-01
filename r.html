@@ -1,0 +1,60 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Message Pages</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 100px;
+      background-color: #f0f0f0;
+    }
+    .page {
+      display: none;
+    }
+    .page.active {
+      display: block;
+    }
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #007BFF;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="page1" class="page">
+    <h1>You are the best</h1>
+    <a href="#page2">Next</a>
+  </div>
+
+  <div id="page2" class="page">
+    <h1>I am sorry</h1>
+    <a href="#page3">Next</a>
+  </div>
+
+  <div id="page3" class="page">
+    <h1>You are still the same person for me you were 1 month ago</h1>
+    <a href="#page1">Start Over</a>
+  </div>
+
+  <script>
+    function showPageFromHash() {
+      const hash = window.location.hash || "#page1";
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      const page = document.querySelector(hash);
+      if (page) page.classList.add('active');
+    }
+
+    window.addEventListener('hashchange', showPageFromHash);
+    window.addEventListener('load', showPageFromHash);
+  </script>
+
+</body>
+</html>
